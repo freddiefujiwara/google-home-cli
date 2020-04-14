@@ -1,0 +1,16 @@
+{
+  "compilerOptions": {
+    "target": "es3",
+    "module": "commonjs",
+    "lib": ["esnext"],
+    "types": ["node", "jest"],
+    "strict": true,
+    "importHelpers": true,
+    "experimentalDecorators": true,
+    "moduleResolution": "node",
+    "esModuleInterop": true,
+    "outDir": "dist/lib"
+  },
+  "include": ["src"],
+  "exclude": ["**/*.spec.ts"]
+}
