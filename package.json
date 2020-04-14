@@ -1,6 +1,6 @@
 {
   "name": "google-home-cli",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "google-home-cli implementation by using fast-check",
   "bin": "bin/index.js",
   "main": "dist/lib/index.js",
@@ -57,11 +57,11 @@
     "prettier": "1.19.1",
     "rimraf": "^3.0.2",
     "ts-jest": "25.2.1",
-    "tslib": "1.11.1",
     "typescript": "^3.8.3"
   },
   "dependencies": {
     "castv2-client": "1.2.0",
+    "tslib": "1.11.1",
     "commander": "5.0.0"
   }
 }
