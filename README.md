@@ -40,6 +40,12 @@ Set Volume 0%
 $ google-home-cli 192.168.1.101 unmute
 host:192.168.1.101
 Set Volume 30%
+$ google-home-cli 192.168.1.101 status
+host:192.168.1.101
+...
+$ google-home-cli 192.168.1.101 stop
+host:192.168.1.101
+...
 ```
 
 ## FAQ

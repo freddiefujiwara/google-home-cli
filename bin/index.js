@@ -23,11 +23,17 @@ program
           argValue = arg
         }
         break
+      case "status" :
+        commandValue = Command.GET_STATUS
+        break
       case "mute" :
         commandValue = Command.MUTE
         break
       case "unmute" :
         commandValue = Command.UNMUTE
+        break
+      case "stop" :
+        commandValue = Command.STOP
         break
       default:
         break
