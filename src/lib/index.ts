@@ -38,17 +38,22 @@ export class GoogleHome {
               switch (command) {
                 case Command.GET_VOLUME:
                   console.log(Math.round(status.volume.level * 100))
+                  client.close()
                   break
                 case Command.GET_STATUS:
                   console.log(status)
+                  client.close()
                   break
                 case Command.STOP:
-                  if (status.applications.length > 0) {
+                  if (status && status.applications && status.applications.length > 0) {
                     client.receiver.stop(status.applications[0].sessionId, (err: Error) => {
                       if (err === null) {
                         console.log(`Stop %s`, status.applications[0].sessionId)
                       }
+                      client.close()
                     })
+                  } else {
+                    client.close()
                   }
                   break
                 default:
@@ -56,8 +61,8 @@ export class GoogleHome {
               }
             } else {
               console.error(err)
+              client.close()
             }
-            client.close()
           })
           break
         case Command.SET_VOLUME:
