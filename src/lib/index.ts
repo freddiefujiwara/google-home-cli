@@ -4,6 +4,8 @@ export enum Command {
   SET_VOLUME, //1
   MUTE, //2
   UNMUTE, //3
+  GET_STATUS, //4
+  STOP, //5
 }
 /** Class GoogleHome */
 export class GoogleHome {
@@ -29,9 +31,29 @@ export class GoogleHome {
       console.error('Host:%s', this._host)
       switch (command) {
         case Command.GET_VOLUME:
-          client.getVolume((err: Error, volume: any) => {
+        case Command.GET_STATUS:
+        case Command.STOP:
+          client.getStatus((err: Error, status: any) => {
             if (err === null) {
-              console.log(Math.round(volume.level * 100))
+              switch (command) {
+                case Command.GET_VOLUME:
+                  console.log(Math.round(status.volume.level * 100))
+                  break
+                case Command.GET_STATUS:
+                  console.log(status)
+                  break
+                case Command.STOP:
+                  if (status.applications.length > 0) {
+                    client.receiver.stop(status.applications[0].sessionId, (err: Error) => {
+                      if (err === null) {
+                        console.log(`Stop %s`, status.applications[0].sessionId)
+                      }
+                    })
+                  }
+                  break
+                default:
+                  break
+              }
             } else {
               console.error(err)
             }
