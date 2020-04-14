@@ -1,0 +1,8 @@
+!*.js
+!*.ts
+coverage/
+dist/
+bin/
+node_modules/
+.github/
+state.smc
