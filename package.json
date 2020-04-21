@@ -1,6 +1,6 @@
 {
   "name": "google-home-cli",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "description": "google-home-cli implementation by using fast-check",
   "bin": "bin/index.js",
   "main": "dist/lib/index.js",

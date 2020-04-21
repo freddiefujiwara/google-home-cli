@@ -35,6 +35,12 @@ program
       case "stop" :
         commandValue = Command.STOP
         break
+      case "volup" :
+        commandValue = Command.VOLUP
+        break
+      case "voldown" :
+        commandValue = Command.VOLDOWN
+        break
       default:
         break
     }
