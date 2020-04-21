@@ -6,6 +6,8 @@ export enum Command {
   UNMUTE, //3
   GET_STATUS, //4
   STOP, //5
+  VOLUP, //6
+  VOLDOWN, //6
 }
 /** Class GoogleHome */
 export class GoogleHome {
@@ -68,13 +70,21 @@ export class GoogleHome {
         case Command.SET_VOLUME:
         case Command.MUTE:
         case Command.UNMUTE:
+        case Command.VOLUP:
+        case Command.VOLDOWN:
           client.getVolume((err: Error, volume: any) => {
             if (err === null) {
               if (command === Command.SET_VOLUME) {
-                volume.level = (parseInt(arg) % 100) / 100
+                volume.level = parseInt(arg) / 100
+              } else if (command === Command.VOLUP) {
+                volume.level += 0.1
+              } else if (command === Command.VOLDOWN) {
+                volume.level -= 0.1
               } else {
                 volume.level = command === Command.MUTE ? 0 : 0.3
               }
+              volume.level = volume.level >= 1 ? 1 : volume.level
+              volume.level = volume.level <= 0 ? 0 : volume.level
               console.log(`Set Volume %d%`, Math.round(volume.level * 100))
               client.setVolume(volume, (err: Error) => {
                 if (err) {
